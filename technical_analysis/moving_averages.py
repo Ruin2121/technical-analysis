@@ -3,7 +3,7 @@ from typing import Union
 import numpy as np
 import pandas as pd
 
-from utils import to_numpy, pre_return_conversion
+from technical_analysis.utils import to_numpy, pre_return_conversion
 
 
 def simple_moving_average(data: Union[list, np.ndarray, pd.Series], window: int, output_type: str = "numpy") -> Union[
