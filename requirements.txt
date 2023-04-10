@@ -1,4 +1,4 @@
 pathlib~=1.0.1
-setuptools~=63.4.1
+setuptools~=67.6.1
 numpy~=1.24.2
 pandas~=1.4.4
