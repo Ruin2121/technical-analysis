@@ -77,7 +77,7 @@ class BaseIndicatorClass(abc.ABC):
                 raise ValueError("Input data contains NaN values.")
             if np.isinf(numpy_data).any():
                 raise ValueError("Input data contains infinite values.")
-            if not np.issubdtype(numpy_data.dtype, np.number):
+            if not np.issubdtype(numpy_data.dtype, np.number) or np.issubdtype(numpy_data.dtype, np.timedelta64):
                 raise ValueError("Input data contains non-numeric values.")
 
         if window_size is not None:
