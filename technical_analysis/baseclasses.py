@@ -86,6 +86,6 @@ class BaseIndicatorClass(abc.ABC):
             if window_size <= 0:
                 raise ValueError("Window size must be a positive integer.")
 
-        if (numpy_data and window_size) is not None:
+        if numpy_data is not None and window_size is not None:
             if window_size > len(numpy_data):
                 raise ValueError("Window size cannot be greater than the length of the input data.")
