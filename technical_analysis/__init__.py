@@ -1,4 +1,4 @@
-from technical_analysis.overlays.moving_averages import SimpleMovingAverage
+from technical_analysis.basic_indicators.overlays.moving_averages import SimpleMovingAverage
 
 __all__ = [
     "SimpleMovingAverage",
