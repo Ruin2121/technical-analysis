@@ -71,6 +71,8 @@ class BaseIndicatorClass(abc.ABC):
     @staticmethod
     def _handle_common_errors(numpy_data: np.ndarray = None, window_size: int = None):
         if numpy_data is not None:
+            if len(numpy_data) < 1:
+                raise ValueError("Input Data contains no values.")
             if np.isnan(numpy_data).any():
                 raise ValueError("Input data contains NaN values.")
             if np.isinf(numpy_data).any():
