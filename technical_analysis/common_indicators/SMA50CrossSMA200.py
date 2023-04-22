@@ -18,6 +18,6 @@ class SMA50CrossSMA200(BaseIndicatorClass):
                 'window': 200
                 }
             }
-        func = MovingAverageCrossover(self.data, SimpleMovingAverage, SimpleMovingAverage, **func_args)
+        func = MovingAverageCrossover(data=self.data, ma1=SimpleMovingAverage, ma2=SimpleMovingAverage, **func_args)
 
         self._output_data = func.to_np_array()
