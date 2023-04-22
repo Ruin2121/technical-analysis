@@ -89,3 +89,8 @@ class BaseIndicatorClass(abc.ABC):
         if numpy_data is not None and window_size is not None:
             if window_size > len(numpy_data):
                 raise ValueError("Window size cannot be greater than the length of the input data.")
+
+
+class BaseMovingAverageClass(BaseIndicatorClass):
+    def __init__(self):
+        super().__init__()

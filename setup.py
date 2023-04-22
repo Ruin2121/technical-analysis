@@ -7,7 +7,7 @@ long_description = (here / "README.md").read_text(encoding="utf-8")
 
 setup(
     name="technical-analysis",
-    version="2023.4.20.5",
+    version="2023.4.21.1",
     description="A simple, generic Python technical analysis library",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -22,7 +22,6 @@ setup(
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.9",
-        "Programming Language :: Python :: 3.11",
         "Topic :: Scientific/Engineering :: Mathematics",
         "Topic :: Scientific/Engineering :: Information Analysis",
         ],

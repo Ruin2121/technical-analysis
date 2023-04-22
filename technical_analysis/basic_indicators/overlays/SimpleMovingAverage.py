@@ -1,10 +1,10 @@
 import numpy as np
 import pandas as pd
 from typing import Union
-from technical_analysis.baseclasses import BaseIndicatorClass
+from technical_analysis.baseclasses import BaseMovingAverageClass
 
 
-class SimpleMovingAverage(BaseIndicatorClass):
+class SimpleMovingAverage(BaseMovingAverageClass):
     """
         A class that calculates the simple moving average of a given data set.
 
