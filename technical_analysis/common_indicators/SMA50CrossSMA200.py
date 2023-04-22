@@ -7,6 +7,7 @@ class SMA50CrossSMA200(BaseIndicatorClass):
     def __init__(self, data):
         super().__init__()
         self.data = data
+        self._calculation()
 
     def _calculation(self):
         func_args = {
