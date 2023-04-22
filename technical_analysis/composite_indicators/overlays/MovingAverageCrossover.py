@@ -32,10 +32,12 @@ class MovingAverageCrossover(BaseIndicatorClass):
 
         # Detects when ma1 crosses above ma2
         ma1_cross_up = np.where(ma1_values > ma2_values, 1, 0)
+        ma1_cross_up[1:][np.logical_and(ma1_values[:-1] < ma2_values[:-1], ma1_values[1:] > ma2_values[1:])] = 1
         results += ma1_cross_up
 
         # Detects when ma1 crosses below ma2
         ma1_crosses_down = np.where(ma1_values < ma2_values, 2, 0)
+        ma1_crosses_down[1:][np.logical_and(ma1_values[:-1] > ma2_values[:-1], ma1_values[1:] < ma2_values[1:])] = 2
         results += ma1_crosses_down
 
         self._output_data = results
