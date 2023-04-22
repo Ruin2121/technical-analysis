@@ -12,12 +12,14 @@ class SMA50CrossSMA200(BaseIndicatorClass):
     def _calculation(self):
         func_args = {
             'ma1': {
+                'ma_class': SimpleMovingAverage,
                 'window': 50
                 },
             'ma2': {
+                'ma_class': SimpleMovingAverage,
                 'window': 200
                 }
             }
-        func = MovingAverageCrossover(data=self.data, ma1=SimpleMovingAverage, ma2=SimpleMovingAverage, **func_args)
+        func = MovingAverageCrossover(data=self.data, **func_args)
 
         self._output_data = func.to_np_array()

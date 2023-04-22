@@ -1,20 +1,17 @@
 from technical_analysis.baseclasses import BaseMovingAverageClass, BaseIndicatorClass
-from typing import Type, TypeVar, Union
+from typing import Union
 import pandas as pd
 import numpy as np
 
 
-T = TypeVar('T', bound=BaseMovingAverageClass)
-
-
 class MovingAverageCrossover(BaseIndicatorClass):
-    def __init__(self, data: Union[list, np.ndarray, pd.Series], ma1: Type[T], ma2: Type[T], **kwargs):
+    def __init__(self, data: Union[list, np.ndarray, pd.Series], **kwargs):
         super().__init__()
         self.ma1_args = kwargs.get('ma1', {})
         self.ma2_args = kwargs.get('ma2', {})
         self.__numpy_data = self._to_numpy(data)
-        self.ma1 = ma1
-        self.ma2 = ma2
+        self.ma1 = self.ma1_args.pop('ma_class', None)
+        self.ma2 = self.ma2_args.pop('ma_class', None)
         self._handle_common_errors(self.__numpy_data)
         self._handle_additional_errors()
         self._calculation()
