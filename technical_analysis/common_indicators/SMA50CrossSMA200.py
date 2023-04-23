@@ -23,9 +23,4 @@ class SMA50CrossSMA200(BaseIndicatorClass):
         func = MovingAverageCrossover(data=self.data, **func_args)
         results = func.to_np_array()
 
-        # This is a placeholder solution
-        # Without this, the results may include false positives in the first 200 values
-        # Need to find a better solution later
-        results[:199] = 0
-
         self._output_data = results

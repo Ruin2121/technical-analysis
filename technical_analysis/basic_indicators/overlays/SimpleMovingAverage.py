@@ -34,7 +34,7 @@ class SimpleMovingAverage(BaseMovingAverageClass):
                 ValueError: If the window size is greater than the length of the input data.
         """
         super().__init__()
-        self.__window = window
+        self._window = window
         self.__numpy_data = self._to_numpy(data)
         self._handle_common_errors(self.__numpy_data, window)
         self._calculation()
@@ -45,6 +45,6 @@ class SimpleMovingAverage(BaseMovingAverageClass):
 
             Sets the calculated moving average to the object's _output_data attribute.
         """
-        weights = np.repeat(1.0, self.__window) / self.__window
+        weights = np.repeat(1.0, self._window) / self._window
         sma = np.convolve(self.__numpy_data, weights, 'full')[:len(self.__numpy_data)]
         self._output_data = sma

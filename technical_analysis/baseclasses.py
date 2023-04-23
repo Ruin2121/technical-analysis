@@ -39,6 +39,13 @@ class BaseIndicatorClass(abc.ABC):
 
     @abc.abstractmethod
     def _calculation(self):
+        """
+            The calculations for the indicator should go hear.
+
+            Should set self._output_data.
+
+            Should not return anything.
+        """
         pass
 
     def to_list(self) -> list:
@@ -94,3 +101,7 @@ class BaseIndicatorClass(abc.ABC):
 class BaseMovingAverageClass(BaseIndicatorClass):
     def __init__(self):
         super().__init__()
+        self._window = None
+
+    def return_window(self):
+        return self._window

@@ -27,6 +27,14 @@ class MovingAverageCrossover(BaseIndicatorClass):
         ma1_values = ma1.to_np_array()
         ma2_values = ma2.to_np_array()
 
+        # Extract window size of moving averages
+        ma1_window = ma1.return_window()
+        if ma1_window is None:
+            ma1_window = 0
+        ma2_window = ma2.return_window()
+        if ma2_window is None:
+            ma2_window = 0
+
         # Initialize an array to store the results
         results = np.zeros_like(self.__numpy_data)
 
@@ -36,6 +44,8 @@ class MovingAverageCrossover(BaseIndicatorClass):
 
         # When ma1 crosses below ma2
         results[1:][np.logical_and(ma1_values[:-1] > ma2_values[:-1], ma1_values[1:] < ma2_values[1:])] = 2
+
+        results[:max(ma1_window, ma2_window)] = 0
 
         self._output_data = results
 
