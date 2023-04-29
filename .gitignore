@@ -190,3 +190,4 @@ cython_debug/
 .scannerwork/
 sonar-project.properties
 plzignore.py
+.vscode/

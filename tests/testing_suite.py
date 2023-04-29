@@ -2,13 +2,14 @@
 # and is provided under the Creative Commons Zero public domain dedication.
 import hypothesis
 import numpy as np
-import technical_analysis
-from hypothesis import given, strategies as st, settings
+from hypothesis import given, settings
+from hypothesis import strategies as st
 from hypothesis.extra._array_helpers import array_shapes
 from hypothesis.extra.numpy import arrays, scalar_dtypes
 from pandas import Series
+import technical_analysis
 
-max_settings = 100
+MAX_SETTINGS = 100
 
 
 @st.composite
@@ -23,7 +24,7 @@ def validated_inputs(draw):
     return data, window
 
 
-@settings(max_examples=max_settings, suppress_health_check=[hypothesis.HealthCheck.too_slow, ])
+@settings(max_examples=MAX_SETTINGS, suppress_health_check=[hypothesis.HealthCheck.too_slow, ])
 @given(validated_inputs())
 def test_fuzz_simple_moving_average(data_window) -> None:
     data, window = data_window
