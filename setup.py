@@ -1,5 +1,8 @@
-from setuptools import setup, find_packages
+"""
+    This library is meant to be a module-based technical analysis library.
+"""
 import pathlib
+from setuptools import find_packages, setup
 
 here = pathlib.Path(__file__).parent.resolve()
 
@@ -24,8 +27,8 @@ setup(
         "Programming Language :: Python :: 3.9",
         "Topic :: Scientific/Engineering :: Mathematics",
         "Topic :: Scientific/Engineering :: Information Analysis",
-        ],
+    ],
     keywords="technical analysis",
     packages=find_packages(),
     python_requires=">=3.9, <4",
-    )
+)
