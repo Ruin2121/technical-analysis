@@ -14,17 +14,6 @@ class SimpleMovingAverage(BaseMovingAverageClass):
         A list, NumPy array, or Pandas series containing the data to be analyzed.
     window: int
         An integer representing the size of the window used for the moving average.
-
-    Inherited Methods
-    -----------------
-    to_list()
-        returns the output of the indicator calculation as a list.
-    to_np_array()
-        returns the output of the indicator calculation as a NumPy array.
-    to_pd_series()
-        returns the output of the indicator calculation as a Pandas Series.
-    return_window()
-        Returns the window of the moving average.
     """
 
     def __init__(self, data: Union[list, np.ndarray, pd.Series], window: int):

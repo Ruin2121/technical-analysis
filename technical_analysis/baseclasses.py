@@ -162,15 +162,6 @@ class BaseMovingAverageClass(BaseIndicatorClass, ABC):
     -------
     return_window()
         Returns the window of the moving average.
-
-    Inherited Methods
-    -----------------
-    to_list()
-        returns the output of the indicator calculation as a list.
-    to_np_array()
-        returns the output of the indicator calculation as a NumPy array.
-    to_pd_series()
-        returns the output of the indicator calculation as a Pandas Series.
     """
 
     def __init__(self):

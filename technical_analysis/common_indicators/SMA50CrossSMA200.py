@@ -18,15 +18,6 @@ class SMA50CrossSMA200(BaseIndicatorClass):
     ----------
     data : Union[list, np.ndarray, pd.Series]
         Input data.
-
-    Inherited Methods
-    -----------------
-    to_list()
-        returns the output of the indicator calculation as a list.
-    to_np_array()
-        returns the output of the indicator calculation as a NumPy array.
-    to_pd_series()
-        returns the output of the indicator calculation as a Pandas Series.
     """
 
     def __init__(self, data: Union[list, np.ndarray, pd.Series]):

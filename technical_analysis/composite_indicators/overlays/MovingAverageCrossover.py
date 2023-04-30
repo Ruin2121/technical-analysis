@@ -15,15 +15,6 @@ class MovingAverageCrossover(BaseIndicatorClass):
     **kwargs : dict
         See Examples Section.
 
-    Inherited Methods
-    -----------------
-    to_list()
-        returns the output of the indicator calculation as a list.
-    to_np_array()
-        returns the output of the indicator calculation as a NumPy array.
-    to_pd_series()
-        returns the output of the indicator calculation as a Pandas Series.
-
     Examples
     --------
     The **kwargs argument should be a dictionary conforming to the example below. Dict keys "ma1"
