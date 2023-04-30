@@ -1,3 +1,5 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/ruin2121/technical-analysis/badge)](https://www.codefactor.io/repository/github/ruin2121/technical-analysis)
+[![Documentation Status](https://readthedocs.org/projects/technical-analysis/badge/?version=latest)](https://technical-analysis.readthedocs.io/en/latest/?badge=latest)
 # technical-analysis
 
 ```
