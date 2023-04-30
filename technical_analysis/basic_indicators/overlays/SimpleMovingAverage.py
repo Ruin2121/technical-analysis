@@ -6,32 +6,30 @@ from technical_analysis.baseclasses import BaseMovingAverageClass
 
 class SimpleMovingAverage(BaseMovingAverageClass):
     """
-        A class that calculates the simple moving average of a given data set.
+    Implementation of Simple Moving Average (SMA) calculation.
 
-        Args:
-            data: A list, NumPy array, or Pandas series containing the data to be analyzed.
-            window: An integer representing the size of the window used for the moving average.
+    Parameters
+    ----------
+    data: Union[list, np.ndarray, pd.Series]
+        A list, NumPy array, or Pandas series containing the data to be analyzed.
+    window: int
+        An integer representing the size of the window used for the moving average.
 
-        Returns:
-            A list, NumPy array, or Pandas series containing the calculated moving average.
-
-        Raises:
-            TypeError: If the input data type is not supported (list, NumPy array, or Pandas series).
-            ValueError: If the window size is not a positive integer.
-            ValueError: If the window size is greater than the length of the input data.
+    Inherited Methods
+    -----------------
+    to_list()
+        returns the output of the indicator calculation as a list.
+    to_np_array()
+        returns the output of the indicator calculation as a NumPy array.
+    to_pd_series()
+        returns the output of the indicator calculation as a Pandas Series.
+    return_window()
+        Returns the window of the moving average.
     """
+
     def __init__(self, data: Union[list, np.ndarray, pd.Series], window: int):
         """
-            Initializes a SimpleMovingAverage object.
-
-            Args:
-                data: A list, NumPy array, or Pandas series containing the data to be analyzed.
-                window: An integer representing the size of the window used for the moving average.
-
-            Raises:
-                TypeError: If the input data type is not supported (list, NumPy array, or Pandas series).
-                ValueError: If the window size is not a positive integer.
-                ValueError: If the window size is greater than the length of the input data.
+        Initializes the Simple Moving Average class.
         """
         super().__init__()
         self._window = window
@@ -41,10 +39,8 @@ class SimpleMovingAverage(BaseMovingAverageClass):
 
     def _calculation(self):
         """
-            Calculates the simple moving average of the input data.
-
-            Sets the calculated moving average to the object's _output_data attribute.
+        Performs the calculation of the Simple Moving Average.
         """
         weights = np.repeat(1.0, self._window) / self._window
-        sma = np.convolve(self.__numpy_data, weights, 'full')[:len(self.__numpy_data)]
+        sma = np.convolve(self.__numpy_data, weights, "full")[: len(self.__numpy_data)]
         self._output_data = sma
