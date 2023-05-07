@@ -21,7 +21,7 @@
 
 import pandas as pd
 import numpy as np
-from custom_exceptions import InvalidInstanceError
+from technical_analysis.custom_exceptions import InvalidInstanceError
 
 
 class Analysis:
