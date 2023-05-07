@@ -1,24 +1,3 @@
-# TODO Rebuild library again, using one single class.
-
-# The class should be initialized with a dataframe input.
-
-# The class should then use methods to calculate whatever is necessary, then save it to an analysis
-# dataframe.
-
-# Each calculation method should check if the data has already been calculated first before
-# attempting to calculate it.
-
-# If it has then it should return immediately.
-
-# This should be more efficient than the previous module system, even though it will potentially
-# lead to less customization by the end user.
-
-# Should be set up so the end user can freely extend the class and add whatever new calculations
-# they wish to.
-
-# Also, create separate project to document different ways of doing things, search for most optimal
-# route.
-
 import pandas as pd
 import numpy as np
 from technical_analysis.custom_exceptions import InvalidInstanceError
