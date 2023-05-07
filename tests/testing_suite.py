@@ -7,8 +7,9 @@ from hypothesis import strategies as st
 from hypothesis.extra._array_helpers import array_shapes
 from hypothesis.extra.numpy import arrays, scalar_dtypes
 from pandas import Series
+import pandas as pd
 
-import technical_analysis
+from technical_analysis import Analysis
 
 MAX_SETTINGS = 100
 
@@ -33,18 +34,32 @@ def validated_inputs(draw):
     return data, window
 
 
+@st.composite
+def validated_inputs_simple_moving_average(draw):
+    df = pd.DataFrame()
+    df["close"] = draw(
+        st.one_of(
+            st.builds(list),
+            arrays(
+                dtype=scalar_dtypes(), shape=array_shapes(max_dims=1, max_side=1000)
+            ),
+            st.builds(Series),
+        )
+    )
+    window = draw(st.integers(min_value=1, max_value=len(df["close"])))
+    return df, window
+
+
 @settings(
     max_examples=MAX_SETTINGS,
     suppress_health_check=[
         hypothesis.HealthCheck.too_slow,
     ],
 )
-@given(validated_inputs())
-def test_fuzz_simple_moving_average(data_window) -> None:
-    data, window = data_window
-    technical_analysis.SimpleMovingAverage(data=data, window=window)
-
-
-def test_simple_moving_average(data_window) -> None:
-    data, window = data_window
-    tests = technical_analysis.base.Analysis()
+@given(validated_inputs_simple_moving_average())
+def test_simple_moving_average(df_window) -> None:
+    df, window = df_window
+    tests = Analysis(df)
+    run1 = tests.simple_moving_average(window=window)
+    run2 = tests.simple_moving_average(window=window)
+    assert run1 == run2
