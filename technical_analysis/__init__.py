@@ -1,9 +1,5 @@
-from technical_analysis.basic_indicators.overlays.SimpleMovingAverage import SimpleMovingAverage
-from technical_analysis.composite_indicators.overlays.MovingAverageCrossover import MovingAverageCrossover
-from technical_analysis.common_indicators.SMA50CrossSMA200 import SMA50CrossSMA200
+from technical_analysis.base import Analysis
 
 __all__ = [
-    "SimpleMovingAverage",
-    "MovingAverageCrossover",
-    "SMA50CrossSMA200",
-    ]
+    "Analysis",
+]

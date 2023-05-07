@@ -43,3 +43,8 @@ def validated_inputs(draw):
 def test_fuzz_simple_moving_average(data_window) -> None:
     data, window = data_window
     technical_analysis.SimpleMovingAverage(data=data, window=window)
+
+
+def test_simple_moving_average(data_window) -> None:
+    data, window = data_window
+    tests = technical_analysis.base.Analysis()
