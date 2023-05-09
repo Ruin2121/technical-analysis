@@ -1,6 +1,9 @@
 import pandas as pd
 import numpy as np
-from technical_analysis.custom_exceptions import InvalidInstanceError
+from technical_analysis.custom_exceptions import (
+    InvalidInstanceError,
+    EmptyDataframeError,
+)
 
 
 class Analysis:
@@ -31,6 +34,8 @@ class Analysis:
     ------
     TypeError
         If df is not a Pandas DataFrame.
+    EmptyDataframeError
+        If df is an empty Dataframe.
     """
 
     def __init__(self, df: pd.DataFrame):
@@ -39,6 +44,8 @@ class Analysis:
             raise TypeError(
                 "Input must be a pandas DataFrame. " f"Got {type(df)} instead."
             )
+        if df.empty:
+            raise EmptyDataframeError("The input dataframe must not be empty.")
         self.input_df = df
         self.input_df.columns = self.input_df.columns.str.lower()
         self._data_checks()
