@@ -79,25 +79,29 @@ class Analysis:
         Checks that the input data is valid.
         """
         for column in self.input_df.columns:
-            data = self._to_numpy(self.input_df[column])
+            data = self.input_df[column]
             self._input_checks(data)
 
-    @staticmethod
-    def _input_checks(data: np.ndarray):
+    def _input_checks(self, data_raw: pd.Series):
         """
         Checks that the input data is valid.
         """
+        data = self._to_numpy(data_raw)
         if data is not None:
             if len(data) < 1:
-                raise ValueError("Input Data contains no values.")
+                raise ValueError(f"Input Data ({data_raw.name}) contains no values.")
             if np.isnan(data).any():
-                raise ValueError("Input data contains NaN values.")
+                raise ValueError(f"Input Data ({data_raw.name}) contains NaN values.")
             if np.isinf(data).any():
-                raise ValueError("Input data contains infinite values.")
+                raise ValueError(
+                    f"Input Data ({data_raw.name}) contains infinite values."
+                )
             if not np.issubdtype(data.dtype, np.number) or np.issubdtype(
                 data.dtype, np.timedelta64
             ):
-                raise ValueError("Input data contains non-numeric values.")
+                raise ValueError(
+                    f"Input Data ({data_raw.name}) contains non-numeric values."
+                )
 
     def simple_moving_average(self, window: int, column: str = "close") -> pd.Series:
         """
