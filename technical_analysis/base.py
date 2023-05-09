@@ -209,14 +209,17 @@ class Analysis:
                 "Both functions must belong to the same instance as the calling class instance."
             )
 
-        # Need to decide on a good way to store and pull the data from analysis_df.
-        # column_name = f"{column}_sma_{window}"
-        # if column_name in self.analysis_df.columns:
-        #     return self.analysis_df[column_name]
-
         # Calculate or retrieve the moving averages
-        ma1_values = self._to_numpy(ma1(**ma1_args))
-        ma2_values = self._to_numpy(ma2(**ma2_args))
+        ma1_raw = ma1(**ma1_args)
+        ma2_raw = ma2(**ma2_args)
+
+        column_name = f"{ma1_raw.name}_cross_{ma2_raw.name}"
+        if column_name in self.analysis_df.columns:
+            return self.analysis_df[column_name]
+
+        # Convert to numpy array
+        ma1_values = self._to_numpy(ma1_raw)
+        ma2_values = self._to_numpy(ma2_raw)
 
         # Extract window size of moving averages
         ma1_window = ma1_args["window"] if "window" in ma1_args else 0
@@ -242,4 +245,6 @@ class Analysis:
 
         results[: max(ma1_window, ma2_window)] = 0
 
-        return self._to_pandas_series(results)
+        self.analysis_df[column_name] = self._to_pandas_series(results)
+
+        return self.analysis_df[column_name]
