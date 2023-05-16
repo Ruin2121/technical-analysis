@@ -4,15 +4,15 @@
 import pathlib
 from setuptools import find_packages, setup
 
-here = pathlib.Path(__file__).parent.resolve()
+HERE = pathlib.Path(__file__).parent.resolve()
 
-long_description = (here / "README.md").read_text(encoding="utf-8")
+LONG_DESCRIPTION = (HERE / "README.md").read_text(encoding="utf-8")
 
 setup(
     name="technical-analysis",
-    version="2023.5.9.3",
+    version="2023.5.16.1",
     description="A simple, generic Python technical analysis library",
-    long_description=long_description,
+    long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
     url="https://github.com/Ruin2121/technical-analysis",
     author="Ruin2121",
